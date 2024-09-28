@@ -1,0 +1,19 @@
+.alex-brush-regular {
+    font-family: "Alex Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    font-family: "Alex Brush", cursive;
+    color: #000;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+body {
+    background-color: green;
+}

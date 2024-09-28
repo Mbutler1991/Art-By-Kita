@@ -1,0 +1,33 @@
+.alex-brush-regular {
+    font-family: "Alex Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #ffecf2;
+    font-family: "Roboto", sans-serif;
+}
+
+header, footer {
+    background-color: #ffd9e5;
+    padding: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #fff;
+}
+
+h1 {
+    font-size: 5em;
+    font-weight: 700;
+    font-family: "Alex Brush", cursive;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
