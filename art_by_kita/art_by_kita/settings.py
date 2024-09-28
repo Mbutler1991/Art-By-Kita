@@ -18,14 +18,16 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-env= environ.Env()
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = environ.Env().str('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
@@ -84,9 +86,9 @@ WSGI_APPLICATION = 'art_by_kita.wsgi.application'
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env.str('CLOUD_NAME'),
-    'API_KEY': env.str('API_KEY'),
-    'API_SECRET': env.str('API_SECRET')
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET')
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
