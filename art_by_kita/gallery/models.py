@@ -3,7 +3,7 @@ from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
 class Painting(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=50)
     description = models.TextField()
     dimensions = models.CharField(max_length=50)
     materials = models.CharField(max_length=150)
