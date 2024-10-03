@@ -34,6 +34,9 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'home'  
+LOGOUT_REDIRECT_URL = 'home'  
+LOGIN_URL = 'login'  
 
 # Application definition
 
@@ -44,8 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary',
     'cloudinary_storage',
+    'accounts',
     'home',
     'gallery',
     'contact',
@@ -55,6 +63,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -105,6 +114,10 @@ DATABASES = {
     }
 }
 
+SITE_ID = 1  
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

@@ -5,7 +5,7 @@
     <div class="product-details">
         <img src="{{ painting.image.url }}" alt="{{ painting.name }}">
         <div class="details">
-            <h1>{{ painting.name }}</h1>
+            <h1>{{ painting.title }}</h1>
             <p class="price">${{ painting.price }}</p>
             <p><strong>Dimensions:</strong> {{ painting.dimensions }}</p>
             <p><strong>Materials:</strong> {{ painting.materials }}</p>
@@ -13,7 +13,7 @@
                 {{ painting.description }}
             </p>
             <button class="purchase-button">Purchase</button>
-            <a href="{% url 'contact:contact_us' %}" class="contact-button">Ask a Question</a>
+            <a href="{% url 'contact:contact' %}" class="contact-button">Ask a Question</a>
         </div>
     </div>
 </div>
