@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'home',
     'gallery',
     'contact',
-    'basket',
     'orders',
 ]
 
@@ -92,6 +91,9 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
