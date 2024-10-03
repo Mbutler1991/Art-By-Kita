@@ -10,6 +10,6 @@ class OrderItemInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'created_at', 'total_amount', 'stripe_payment_intent')
     search_fields = ('id', 'user_username', 'stripe_payment_intent')
-    list_filter = ('created_at')
+    list_filter = ['created_at']
     inlines = [OrderItemInline]
 
