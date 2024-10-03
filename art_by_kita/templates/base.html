@@ -26,19 +26,31 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'gallery:painting_list' %}">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'gallery:painting_list' %}">Gallery</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact:contact' %}">Contact</a></li>
                         {% if user.is_authenticated %}
-                            <li><a href="{% url 'accounts:profile' %}">Profile</a></li>
-                            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                        <li class="nav-item"><a href="{% url 'accounts:profile' %}">Profile</a></li>
+                        <li class="nav-item"><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'basket:view_basket' %}">Basket</a></li>
                         {% else %}
-                            <li><a href="{% url 'accounts:login' %}">Login</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                        <li class="nav-item"><a href="{% url 'accounts:login' %}">Login</a></li>
+                        <li class="nav-item"><a href="{% url 'accounts:signup' %}">Signup</a></li>
                         {% endif %}
                     </ul>
                 </div>
             </nav>
         </header>
+        <!-- Messages -->
+        <div class="container mt-3">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
         <main class="flex-fill">
             {% block content %}
             {% endblock %}

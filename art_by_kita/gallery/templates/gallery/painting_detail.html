@@ -13,6 +13,12 @@
                 {{ painting.description }}
             </p>
             <button class="purchase-button">Purchase</button>
+            {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'basket:add_to_basket' painting.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Add to Basket</button>
+            </form>
+            {% endif %}
             <a href="{% url 'contact:contact' %}" class="contact-button">Ask a Question</a>
         </div>
     </div>
