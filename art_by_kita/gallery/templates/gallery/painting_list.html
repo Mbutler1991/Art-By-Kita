@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="gallery-container">
+    <h1>Gallery</h1>
+    <div class="gallery">
+        {% for painting in paintings %}
+        <div class="gallery-item">
+            <a href="{{ painting.get_absolute_url }}">
+                <img src="{{ painting.image.url }}" alt="{{ painting.name }}">
+                <h3>{{ painting.name }}</h3>
+                <p>${{ painting.price }}</p>
+            </a>
+        </div>
+        {% empty %}
+        <p>No paintings available at the moment.</p>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
