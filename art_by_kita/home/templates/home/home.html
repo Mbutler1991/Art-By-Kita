@@ -1,12 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
+        <div class="container">
             <div class="col-md-12">
-                <h1>Home</h1>
-                <p>Welcome to the home page!</p>
+                <h2>Art by Kita</h2>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex flex-column justify-content-center h-100">
+                            <p>Originally from Belfast and now based in Co. Clare, I specialise in creating stunning
+                                landscapes and dreamscapes using acrylic on pressed canvas.</p>
+                            <p>With a deep passion for capturing nature's beauty and surreal visions, each painting is
+                                crafted with care and imagination.</p>
+                            <p>In addition to my collection of unique works, I am more than happy to bring your ideas to
+                                life, whether through photos or custom requests.</p>
+                            <p>As a Neurodivergent artist with Autism and ADHD, my creative process is shaped by a
+                                unique perspective, infusing every piece with emotion and depth.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        <div class="image-container">
+                            {% if random_painting %}
+                            <img src="{{ random_painting.image.url }}" alt="{{ random_painting.title }}"
+                                class="img-fluid">
+                            {% else %}
+                            <p>No painting available.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
 {% endblock %}
