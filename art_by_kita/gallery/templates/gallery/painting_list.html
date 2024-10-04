@@ -9,7 +9,7 @@
             <a href="{{ painting.get_absolute_url }}">
                 <img src="{{ painting.image.url }}" alt="{{ painting.name }}">
                 <h3>{{ painting.title }}</h3>
-                <p>${{ painting.price }}</p>
+                <p>€{{ painting.price }}</p>
             </a>
         </div>
         {% empty %}

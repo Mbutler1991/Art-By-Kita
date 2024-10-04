@@ -30,7 +30,7 @@ def create_order(request, painting_id):
         # Create Stripe Payment Intent
         intent = stripe.PaymentIntent.create(
             amount=int(total_amount * 100),  # Amount in cents
-            currency='usd',
+            currency='eur',
             metadata={'order_id': order.id}
         )
 

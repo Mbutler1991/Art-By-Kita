@@ -1,33 +1,33 @@
+$(document).ready(function() {
+    // Initialize Stripe with your public key
+    var stripe = Stripe(STRIPE_PUBLIC_KEY);
+    var elements = stripe.elements();
 
-  var stripe = Stripe("{{ stripe_public_key }}");
+    // Create an instance of the card Element
+    var card = elements.create('card');
+    card.mount('#card-element');
 
-  var submitButton = document.getElementById("submit-payment");
+    // Handle form submission
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-  submitButton.addEventListener("click", function() {
-    stripe.confirmCardPayment("{{ client_secret }}", {
-      payment_method: {
-        card: {
-          // Assuming you have a card element in your form
-          number: document.getElementById('card_number'),
-          exp_month: document.getElementById('exp_month'),
-          exp_year: document.getElementById('exp_year'),
-          cvc: document.getElementById('cvc')
-        },
-        billing_details: {
-          name: document.getElementById('cardholder_name').value,
-        }
-      }
-    }).then(function(result) {
-      if (result.error) {
-        // Show error to your customer
-        console.error(result.error.message);
-      } else {
-        // The payment has been processed!
-        if (result.paymentIntent.status === 'succeeded') {
-          // Redirect to a success page
-          window.location.href = "{% url 'order_success' order.id %}";
-        }
-      }
+        stripe.confirmCardPayment(CLIENT_SECRET, {
+            payment_method: {
+                card: card,
+            }
+        }).then(function(result) {
+            if (result.error) {
+                // Display error message in #card-errors
+                document.getElementById('card-errors').textContent = result.error.message;
+            } else {
+                // The payment has been processed
+                if (result.paymentIntent.status === 'succeeded') {
+                    // Redirect to success page
+                    window.location.href = SUCCESS_URL;
+                }
+            }
+        });
     });
-  });
+});
 

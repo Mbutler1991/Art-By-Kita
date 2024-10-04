@@ -6,13 +6,16 @@
         <img src="{{ painting.image.url }}" alt="{{ painting.name }}">
         <div class="details">
             <h1>{{ painting.title }}</h1>
-            <p class="price">${{ painting.price }}</p>
+            <p class="price">€{{ painting.price }}</p>
             <p><strong>Dimensions:</strong> {{ painting.dimensions }}</p>
             <p><strong>Materials:</strong> {{ painting.materials }}</p>
             <p class="description">
                 {{ painting.description }}
             </p>
-            <button class="purchase-button">Purchase</button>
+            <form method="POST" action="{% url 'orders:create_order' painting.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Purchase</button>
+            </form>
             {% if user.is_authenticated %}
             <form method="POST" action="{% url 'basket:add_to_basket' painting.id %}">
                 {% csrf_token %}
