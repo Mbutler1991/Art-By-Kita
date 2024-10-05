@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from .models import UserProfile  
 
 def signup(request):
     if request.method == 'POST':
@@ -16,4 +17,5 @@ def signup(request):
 
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    user_profile = UserProfile.objects.get(user=request.user)  
+    return render(request, 'accounts/profile.html', {'profile': user_profile})

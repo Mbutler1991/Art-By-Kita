@@ -6,6 +6,7 @@ from gallery.models import Painting
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+# orders/views.py
 def create_order(request, painting_id):
     painting = get_object_or_404(Painting, pk=painting_id)
 
@@ -16,7 +17,7 @@ def create_order(request, painting_id):
         # Create Order
         order = Order.objects.create(
             user=request.user if request.user.is_authenticated else None,
-            total_amount=total_amount
+            total_amount=total_amount,
         )
 
         # Create OrderItem
@@ -41,15 +42,16 @@ def create_order(request, painting_id):
             'order': order,
             'client_secret': intent['client_secret'],
             'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+            'full_name': request.user.full_name if request.user.is_authenticated else '',
+            'email': request.user.email if request.user.is_authenticated else '',
+            'phone_number': request.user.phone_number if request.user.is_authenticated else '',
+            'address': request.user.address if request.user.is_authenticated else '',
         }
 
         return render(request, 'orders/payment.html', context)
 
-    context = {
-        'painting': painting
-    }
+    return redirect('gallery:painting_detail', painting_id)  # Redirect to painting detail if not POST
 
-    return render(request, 'orders/create_order.html', context)
 
 def order_success(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
