@@ -6,7 +6,7 @@ def contact_view(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('thank_you')
+            return redirect('contact:thank_you')
     else:
         form = ContactForm()
 

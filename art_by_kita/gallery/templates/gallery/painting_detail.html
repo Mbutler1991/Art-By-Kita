@@ -12,7 +12,7 @@
             <p class="description">
                 {{ painting.description }}
             </p>
-            <form method="POST" action="{% url 'orders:create_order' painting.id %}">
+            <form method="POST" action="{% url 'orders:create_order' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Purchase</button>
             </form>

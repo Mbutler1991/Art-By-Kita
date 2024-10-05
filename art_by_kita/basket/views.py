@@ -20,15 +20,15 @@ def view_basket(request):
 def add_to_basket(request, painting_id):
     painting = get_object_or_404(Painting, pk=painting_id)
     basket, created = Basket.objects.get_or_create(user=request.user)
-    basket_item, created = BasketItem.objects.get_or_create(basket=basket, painting=painting)
-    
-    if not created:
-        basket_item.quantity += 1
-        basket_item.save()
-        messages.info(request, f'Increased quantity of {painting.name} in your basket.')
+
+    # Check if the painting is already in the basket
+    if BasketItem.objects.filter(basket=basket, painting=painting).exists():
+        messages.info(request, f'{painting.title} is already in your basket.')
     else:
-        messages.success(request, f'Added {painting.name} to your basket.')
-    
+        # Create a new basket item with quantity 1
+        basket_item = BasketItem.objects.create(basket=basket, painting=painting)
+        messages.success(request, f'Added {painting.title} to your basket.')
+
     return redirect('basket:view_basket')
 
 @login_required
@@ -36,22 +36,6 @@ def remove_from_basket(request, item_id):
     basket = get_object_or_404(Basket, user=request.user)
     basket_item = get_object_or_404(BasketItem, pk=item_id, basket=basket)
     basket_item.delete()
-    messages.success(request, f'Removed {basket_item.painting.name} from your basket.')
+    messages.success(request, f'Removed {basket_item.painting.title} from your basket.')
     return redirect('basket:view_basket')
 
-@login_required
-def update_basket_item(request, item_id):
-    if request.method == 'POST':
-        basket = get_object_or_404(Basket, user=request.user)
-        basket_item = get_object_or_404(BasketItem, pk=item_id, basket=basket)
-        quantity = int(request.POST.get('quantity', 1))
-        
-        if quantity > 0:
-            basket_item.quantity = quantity
-            basket_item.save()
-            messages.success(request, f'Updated quantity for {basket_item.painting.name}.')
-        else:
-            basket_item.delete()
-            messages.success(request, f'Removed {basket_item.painting.name} from your basket.')
-    
-    return redirect('basket:view_basket')

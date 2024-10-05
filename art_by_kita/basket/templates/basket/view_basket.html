@@ -9,7 +9,6 @@
                 <tr>
                     <th>Painting</th>
                     <th>Price</th>
-                    <th>Quantity</th>
                     <th>Subtotal</th>
                     <th>Actions</th>
                 </tr>
@@ -19,13 +18,6 @@
                 <tr>
                     <td>{{ item.painting.title }}</td>
                     <td>${{ item.painting.price }}</td>
-                    <td>
-                        <form method="POST" action="{% url 'basket:update_basket_item' item.id %}">
-                            {% csrf_token %}
-                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 80px; display: inline;">
-                            <button type="submit" class="btn btn-sm btn-primary">Update</button>
-                        </form>
-                    </td>
                     <td>${{ item.get_cost }}</td>
                     <td>
                         <a href="{% url 'basket:remove_from_basket' item.id %}" class="btn btn-sm btn-danger">Remove</a>
