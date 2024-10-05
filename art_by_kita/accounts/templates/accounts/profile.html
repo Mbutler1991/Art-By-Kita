@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Profile</h2>
-  <p>Username: {{ user.username }}</p>
-  <p>Email: {{ user.email }}</p>
-  <!-- N2S Add rest here later -->
+<h2>Profile</h2>
+<p>Username: {{ profile.username }}</p>
+<p>Email: {{ profile.email }}</p>
+<p>Phone Number: {{ profile.phone_number }}</p>
+<p>Shipping Address: {{ profile.shipping_address }}</p>
 {% endblock %}

@@ -1,21 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm  
 from django.contrib.auth.decorators import login_required
-from .models import UserProfile  
+from .models import CustomUser 
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  
-            return redirect('home')  
+            login(request, user)  # Log the user in after registration
+            return redirect('home:home')  # Redirect to the home page or any other page
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form})
 
 @login_required
 def profile(request):
-    user_profile = UserProfile.objects.get(user=request.user)  
-    return render(request, 'accounts/profile.html', {'profile': user_profile})
+    custom_user = CustomUser.objects.get(id=request.user.id)  
+    return render(request, 'accounts/profile.html', {'profile': custom_user})

@@ -35,9 +35,14 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'basket:view_basket' %}">Basket</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{% url 'accounts:logout' %}" method="POST" style="display: none;">
+                                {% csrf_token %}
+                            </form>
+                        </li>
                         {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a></li>
                         {% endif %}
                     </ul>
