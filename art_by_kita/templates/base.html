@@ -5,8 +5,10 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Art by Kita: A Neurodivergent artist based in County Clare, Ireland, specializing in acrylic landscapes, dreamscapes, and custom paintings, including fairy-themed and Irish myth art.">
-    <meta name="keywords" content="Landscape artist in County Clare, Dreamscape paintings Ireland, Neurodivergent artist with Autism and ADHD, Custom landscape paintings, Irish Fantasy Paintings, Fairy-themed paintings, Acrylic landscape paintings, County Clare landscape artist, Realistic landscape portraits, Fairy art Ireland">
+    <meta name="description"
+        content="Art by Kita: A Neurodivergent artist based in County Clare, Ireland, specializing in acrylic landscapes, dreamscapes, and custom paintings, including fairy-themed and Irish myth art.">
+    <meta name="keywords"
+        content="Landscape artist in County Clare, Dreamscape paintings Ireland, Neurodivergent artist with Autism and ADHD, Custom landscape paintings, Irish Fantasy Paintings, Fairy-themed paintings, Acrylic landscape paintings, County Clare landscape artist, Realistic landscape portraits, Fairy art Ireland">
     <title>{% block title %}Art by Kita{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,12 +34,24 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'gallery:painting_list' %}">Gallery</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact:contact' %}">Contact</a></li>
+                        <!-- links for basket and user profile -->
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'basket:view_basket' %}">Basket</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a></li>
+                        <!-- customer inbox for customers only -->
+                        {% if not user.is_staff %}
+                        <li class="nav-item"><a class="nav-link"
+                                href="{% url 'user_messages:inbox' %}">Messages</a></li>
+                        {% endif %}
+                        <!-- staff inbox for staff only -->
+                        {% if user.is_staff %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user_messages:staff_inbox' %}">Staff Inbox</a></li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{% url 'accounts:logout' %}" method="POST" style="display: none;">
+                            <a class="nav-link" href="#"
+                                onclick="document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{% url 'accounts:logout' %}" method="POST"
+                                style="display: none;">
                                 {% csrf_token %}
                             </form>
                         </li>

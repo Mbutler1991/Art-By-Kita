@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'gallery',
     'contact',
     'orders',
+    'user_messages',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Your Messages</h2>
+<ul>
+    {% for chat in chats %}
+    <li>
+        <strong>From: </strong> {{ chat.sender.name }}<br>
+        <strong>Message: </strong> {{ chat.content }}<br>
+        <strong>Sent: </strong> {{ chat.created_at }}
+        {% if not chat.is_read %}
+        <span class="badge bg-success">New</span>
+        {% endif %}
+    </li>
+    {% empty %}
+    <li>No messages yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
