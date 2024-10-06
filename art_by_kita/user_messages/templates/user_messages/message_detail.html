@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Message from {{ chat.name }}</h2>
+
+<div class="container">
+    <p><strong>Email:</strong> {{ chat.email }}</p>
+    <p><strong>Phone:</strong> {{ chat.phone }}</p>
+    <p><strong>Message:</strong> {{ chat.message }}</p>
+    <p><strong>Sent on:</strong> {{ chat.created }}</p>
+
+    {% if message.reply_message %}
+    <p><strong>Reply:</strong> {{ chat.reply_message }}</p>
+    {% else %}
+    <p>No reply yet.</p>
+    <a href="{% url 'user_messages:message_reply' chat.id %}">Reply to this message</a>
+    {% endif %}
+    
+</div>
+
+{% endblock %}

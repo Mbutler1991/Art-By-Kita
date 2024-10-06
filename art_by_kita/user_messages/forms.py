@@ -1,7 +1,4 @@
 from django import forms
-from .models import Message
 
-class MessageForm(forms.ModelForm):
-    class Meta:
-        model = Message
-        fields = ['content']  
+class ReplyForm(forms.Form):
+    reply = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 40}), label="Reply Message")
