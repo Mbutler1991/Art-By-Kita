@@ -11,7 +11,7 @@
     <p>Shipping Address: {{ profile.shipping_address }}</p>
 
     <!-- CRUD functionality for accounts -->
-    <a href="{% url 'profile_edit' profile.id %}" class="btn btn-warning">Edit Profile</a>
+    <a href="{% url 'edit_profile' profile.id %}" class="btn btn-warning">Edit Profile</a>
     <a href="{% url 'password_change' %}" class="btn btn-warning">Change Password</a>
     <form method="POST" action="{% url 'profile_delete' profile.id %}">
         {% csrf_token %}
