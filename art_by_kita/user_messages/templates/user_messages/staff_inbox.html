@@ -2,13 +2,16 @@
 
 {% block content %}
 
-<h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Customer Messages</h2>
-<div class="container">
+<!-- staff inbox -->
+<div class="lm-3">
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Customer Messages</h2>
+
     {% if chats %}
     <ul>
         {% for chat in chats %}
         <li>
-            <strong><a href="{% url 'user_messages:message_detail' chat.id %}">{{ chat.name }}:</a></strong> {{ chat.message }}
+            <strong><a href="{% url 'user_messages:message_detail' chat.id %}">{{ chat.name }}:</a></strong> {{
+            chat.message }}
             <em>({{ chat.created }})</em>
         </li>
         {% endfor %}

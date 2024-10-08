@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Profile</h2>
-<p>Username: {{ profile.username }}</p>
-<p>Email: {{ profile.email }}</p>
-<p>Phone Number: {{ profile.phone_number }}</p>
-<p>Shipping Address: {{ profile.shipping_address }}</p>
+<!-- profile page with information regarding each account -->
+<div class="lm-3">
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Profile</h2>
+
+    <p>Username: {{ profile.username }}</p>
+    <p>Email: {{ profile.email }}</p>
+    <p>Phone Number: {{ profile.phone_number }}</p>
+    <p>Shipping Address: {{ profile.shipping_address }}</p>
+
+    <!-- CRUD functionality for accounts -->
+    <a href="{% url 'profile_edit' profile.id %}" class="btn btn-warning">Edit Profile</a>
+    <a href="{% url 'password_change' %}" class="btn btn-warning">Change Password</a>
+    <form method="POST" action="{% url 'profile_delete' profile.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Profile</button>
+    </form>
+</div>
+
 {% endblock %}
