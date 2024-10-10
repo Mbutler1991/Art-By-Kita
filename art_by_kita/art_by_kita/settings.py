@@ -30,9 +30,9 @@ SECRET_KEY = env('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 LOGIN_REDIRECT_URL = 'home'  
 LOGOUT_REDIRECT_URL = 'home'  
@@ -64,6 +64,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -139,14 +140,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -163,11 +156,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -175,3 +165,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import django_heroku
+django_heroku.settings(locals())

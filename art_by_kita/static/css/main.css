@@ -1,38 +1,80 @@
+/* font styles */
 .alex-brush-regular {
     font-family: "Alex Brush", cursive;
     font-weight: 400;
     font-style: normal;
 }
 
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* general styles */
 body {
-    background-color: #ffecf2;
     font-family: "Roboto", sans-serif;
 }
 
+main {
+    padding-left: 20px;
+    background-color: #ffecf2;
+    color: #000;
+}
+    
+
+/* header and footer styles */
 header, footer {
     background-color: #ffd9e5;
     padding: 1em;
 }
 
-a {
+/* nav menu styles */
+.navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar-nav:hover {
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.navbar-brand {
+    color: black;
+}
+
+.navbar-toggler {
+    background-color: black; 
+}
+
+.navbar-toggler-icon {
+    background-color: black; 
+}
+
+nav.a {
     text-decoration: none;
     color: #000;
 }
 
-a:hover {
+nav.a:hover {
     color: #fff;
 }
 
+/* header styles */
 h1, h2, h3, h4, h5 {
     font-size: 5em;
     font-weight: 700;
     font-family: "Alex Brush", cursive;
     color: #000;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
-  .gallery-container {
+/* gallery styles */
+.gallery-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
@@ -85,6 +127,7 @@ h1, h2, h3, h4, h5 {
     font-size: 1em;
 }
 
+/* product page styles */
 .image-container img {
     width: 100%;
     height: 100%; 
@@ -164,6 +207,7 @@ h1, h2, h3, h4, h5 {
     background-color: #2980b9;
 }
 
+/* pagination styles */
 .pagination {
     display: flex;
     justify-content: center;

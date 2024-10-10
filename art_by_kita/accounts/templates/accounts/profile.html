@@ -11,11 +11,11 @@
     <p>Shipping Address: {{ profile.shipping_address }}</p>
 
     <!-- CRUD functionality for accounts -->
-    <a href="{% url 'edit_profile' profile.id %}" class="btn btn-warning">Edit Profile</a>
-    <a href="{% url 'password_change' %}" class="btn btn-warning">Change Password</a>
-    <form method="POST" action="{% url 'profile_delete' profile.id %}">
+    <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'accounts:password_change' %}" class="btn btn-primary">Change Password</a>
+    <form method="POST" action="{% url 'accounts:profile_delete' %}">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Delete Profile</button>
+        <button type="submit" class="btn btn-primary">Delete Profile</button>
     </form>
 </div>
 

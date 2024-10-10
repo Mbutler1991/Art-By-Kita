@@ -33,3 +33,12 @@ def edit_profile(request):
         form = CustomUserUpdateForm(instance=request.user)
 
     return render(request, 'accounts/edit_profile.html', {'form': form})
+
+@login_required
+def profile_delete(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()  
+        messages.success(request, 'Your profile has been deleted successfully.')
+        return redirect('home:home') 
+    return render(request, 'accounts/profile_delete.html')
