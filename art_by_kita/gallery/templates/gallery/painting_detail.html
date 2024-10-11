@@ -12,11 +12,11 @@
             <p class="description">
                 {{ painting.description }}
             </p>
+            {% if request.user.is_authenticated %}
             <form method="POST" action="{% url 'orders:create_order' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Purchase</button>
             </form>
-            {% if user.is_authenticated %}
             <form method="POST" action="{% url 'basket:add_to_basket' painting.id %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Add to Basket</button>

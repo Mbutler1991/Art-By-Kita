@@ -11,15 +11,3 @@ class ContactForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'placeholder': 'Phone'}),
             'message': forms.Textarea(attrs={'placeholder': 'Message'})
         }
-
-class ContactReplyForm(forms.ModelForm):
-    reply_message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Reply Message'}), required=False)
-
-    class Meta:
-        model = Contact
-        fields = ['name', 'email', 'message', 'reply_message']
-        widgets = {
-            'name': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'email': forms.EmailInput(attrs={'readonly': 'readonly'}),
-            'message': forms.Textarea(attrs={'readonly': 'readonly'}),
-        }

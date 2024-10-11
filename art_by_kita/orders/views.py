@@ -1,65 +1,96 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Order, OrderItem
-from .models import Painting  
 import stripe
 from django.conf import settings
+from django.contrib import messages  
+import logging
+from basket.models import Basket
+from django.contrib.auth.decorators import login_required
+from .models import Order, OrderItem
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+logger = logging.getLogger(__name__)
+
+@login_required
 def create_order(request):
     if request.method == 'POST':
-        # Get the painting IDs from the POST request
-        painting_ids = request.POST.getlist('painting_ids')  
+        # Get the user's basket
+        basket = get_object_or_404(Basket, user=request.user)
 
-        # Create an order
-        order = Order.objects.create(
-            user=request.user if request.user.is_authenticated else None,
-            total_amount=0,  
-        )
-
-        total_amount = 0 
-
-        for painting_id in painting_ids:
-            painting = get_object_or_404(Painting, pk=painting_id)
-            quantity = int(request.POST.get(f'quantity_{painting_id}', 1))  
-            total_amount += painting.price * quantity  
-
-            # Create OrderItem for each painting
-            OrderItem.objects.create(
-                order=order,
-                painting=painting,
-                quantity=1,
-                price=painting.price
+        # Check if there are items in the basket
+        if basket.items.exists():
+            # Create an order
+            order = Order.objects.create(
+                user=request.user,
+                full_name=f"{request.user.first_name} {request.user.last_name}",
+                email=request.user.email,
+                phone_number=request.user.phone_number,
+                address=request.user.shipping_address,  # Corrected to 'shipping_address'
+                total_amount=0,
             )
 
-        # Update the order total amount after adding all items
-        order.total_amount = total_amount
-        order.save()
+            total_amount = 0
 
-        # Create Stripe Payment Intent
-        intent = stripe.PaymentIntent.create(
-            amount=int(total_amount * 100),  
-            currency='eur',
-            metadata={'order_id': order.id}
-        )
+            for item in basket.items.all():
+                quantity = item.quantity
+                total_amount += item.painting.price * quantity
 
-        order.stripe_payment_intent = intent['id']
-        order.save()
+                OrderItem.objects.create(
+                    order=order,
+                    painting=item.painting,
+                    quantity=quantity,
+                    price=item.painting.price
+                )
 
-        context = {
-            'order': order,
-            'client_secret': intent['client_secret'],
-            'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
-            'full_name': request.user.full_name if request.user.is_authenticated else '',
-            'email': request.user.email if request.user.is_authenticated else '',
-            'phone_number': request.user.phone_number if request.user.is_authenticated else '',
-            'address': request.user.address if request.user.is_authenticated else '',
-        }
+            # Update order total amount
+            order.total_amount = total_amount
+            order.save()
 
-        return render(request, 'orders/payment.html', context)
+            # Validate minimum amount
+            MINIMUM_AMOUNT_EUR_CENTS = 25  # 0.25 EUR
+            amount_cents = int(round(total_amount * 100))
 
-    return redirect('home:home')  
-  
+            if amount_cents < MINIMUM_AMOUNT_EUR_CENTS:
+                messages.error(request, "The total amount is below the minimum chargeable amount (0.25 EUR). Please add more items to your order.")
+                order.delete()
+                return redirect('basket:view_basket')
 
+            try:
+                # Create Stripe Payment Intent
+                intent = stripe.PaymentIntent.create(
+                    amount=amount_cents,
+                    currency='eur',
+                    metadata={'order_id': order.id}
+                )
+            except stripe.error.StripeError as e:
+                logger.error(f"Stripe Error: {e.user_message}")
+                messages.error(request, "There was an error processing your payment. Please try again.")
+                order.delete()
+                return redirect('basket:view_basket')
 
+            order.stripe_payment_intent = intent['id']
+            order.save()
+
+            context = {
+                'order': order,
+                'client_secret': intent['client_secret'],
+                'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+                'full_name': order.full_name,
+                'email': order.email,
+                'phone_number': order.phone_number,
+                'address': order.address,  # 'address' is now correctly set
+            }
+
+            return render(request, 'orders/payment.html', context)
+
+        else:
+            # No items in the basket
+            messages.error(request, 'No paintings selected for this order.')
+            return redirect('basket:view_basket')
+
+    else:
+        return redirect('home:home')
+ 
 def order_success(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
 

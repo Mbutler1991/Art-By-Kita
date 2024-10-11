@@ -127,6 +127,51 @@ h1, h2, h3, h4, h5 {
     font-size: 1em;
 }
 
+/* form styles */
+
+#payment-form {
+    display: flex;
+    flex-direction: column; /* Stack the elements vertically */
+    max-width: 600px; /* Set a max width for the form */
+    margin: 0 auto; /* Center the form */
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between; /* Space between label and input */
+    margin-bottom: 15px; /* Spacing between form groups */
+}
+
+label {
+    flex: 0 0 30%; /* Set the width for labels (30% of the form width) */
+    margin-right: 10px; /* Space between label and input */
+}
+
+input, textarea {
+    flex: 1; /* Make inputs take the remaining space */
+    padding: 8px; /* Add some padding for comfort */
+    border: 1px solid #ccc; /* Basic border styling */
+    border-radius: 4px; /* Rounded corners */
+}
+
+#card-element {
+    margin: 15px 0; /* Space around card element */
+}
+
+#submit {
+    align-self: flex-end; /* Align the submit button to the right */
+    padding: 10px 20px; /* Add padding for the button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+#submit:hover {
+    background-color: #0056b3; /* Darken button on hover */
+}
+
 /* product page styles */
 .image-container img {
     width: 100%;

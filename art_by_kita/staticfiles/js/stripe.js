@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Initialize Stripe with your public key
-    var stripe = Stripe(STRIPE_PUBLIC_KEY);
+    var stripe = Stripe(STRIPE_PUBLIC_KEY);  // Corrected 'Stripe' with uppercase 'S'
     var elements = stripe.elements();
 
     // Create an instance of the card Element

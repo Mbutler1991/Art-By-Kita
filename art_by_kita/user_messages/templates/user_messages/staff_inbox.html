@@ -10,8 +10,7 @@
     <ul>
         {% for chat in chats %}
         <li>
-            <strong><a href="{% url 'user_messages:message_detail' chat.id %}">{{ chat.name }}:</a></strong> {{
-            chat.message }}
+            <strong><a href="{% url 'user_messages:message_detail' chat.id %}">{{ chat.name }}:</a></strong> {{ chat.message }}
             <em>({{ chat.created }})</em>
         </li>
         {% endfor %}
