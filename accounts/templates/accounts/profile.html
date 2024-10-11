@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- profile page with information regarding each account -->
+<div class="lm-3">
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Profile</h2>
+
+    <p>Username: {{ profile.username }}</p>
+    <p>Email: {{ profile.email }}</p>
+    <p>Phone Number: {{ profile.phone_number }}</p>
+    <p>Shipping Address: {{ profile.shipping_address }}</p>
+
+    <!-- CRUD functionality for accounts -->
+    <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'accounts:password_change' %}" class="btn btn-primary">Change Password</a>
+    <form method="POST" action="{% url 'accounts:profile_delete' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Delete Profile</button>
+    </form>
+</div>
+
+{% endblock %}

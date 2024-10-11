@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Manage Paintings</h2>
+<a href="{% url 'gallery:create_painting' %}" class="btn btn-primary">Add New Painting</a>
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Dimension</th>
+            <th>Materials</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for painting in paintings %}
+        <tr>
+            <td>{{ painting.title }}</td>
+            <td>{{ painting.price }}</td>
+            <td>{{ painting.dimension }}</td>
+            <td>{{ painting.materials }}</td>
+            <td>{{ painting.description }}</td>
+            <td>
+                <a href="{% url 'gallery:edit_painting' painting.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'gallery:delete_painting' painting.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

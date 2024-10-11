@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- form for editing account details -->
+<div class="lm-3">
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Edit Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Complete your payment</h2>
+<p>Amount: €{{ order.total_amount }}</p>
+
+<form id="payment-form">
+    {% csrf_token %}
+    <label for="full_name">Full Name:</label>
+    <input type="text" id="full_name" name="full_name" value="{{ full_name }}" {% if not request.user.is_authenticated %} placeholder="Enter your full name" {% endif %} required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{ email }}" {% if not request.user.is_authenticated %} placeholder="Enter your email" {% endif %} required>
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="tel" id="phone_number" name="phone_number" value="{{ phone_number }}" {% if not request.user.is_authenticated %} placeholder="Enter your phone number" {% endif %} required>
+
+    <label for="address">Shipping Address:</label>
+    <textarea id="address" name="address" required>{% if request.user.is_authenticated %}{{ address }}{% else %}Enter your address{% endif %}</textarea>
+
+    <div id="card-element"></div>
+    <button type="submit" id="submit">Pay</button>
+    <div id="card-errors" role="alert"></div>
+</form>
+
+<script>
+    // Pass these variables into the JavaScript from Django
+    var STRIPE_PUBLIC_KEY = "{{ stripe_public_key }}";
+    var CLIENT_SECRET = "{{ client_secret }}";
+    var SUCCESS_URL = "{% url 'orders:order_success' order.id %}";
+</script>
+
+<script src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
