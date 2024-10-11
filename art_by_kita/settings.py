@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -101,7 +103,8 @@ STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db()
+    'default': dj_database_url.config(
+        default=env('DATABASE_URL'))
 }
 
 SITE_ID = 1  
@@ -148,6 +151,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
@@ -158,5 +163,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
 django_heroku.settings(locals())
