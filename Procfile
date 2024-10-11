@@ -1,1 +1,1 @@
-web: gunicorn artbykita.wsgi:application --log-file -
+web: gunicorn art_by_kita.wsgi:application --log-file -
