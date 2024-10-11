@@ -22,7 +22,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.artbykita.com', 'artbykita.com']
+ALLOWED_HOSTS = ['art-by-kita-81626722ece0.herokuapp.com', 'www.artbykita.com', 'artbykita.com']
 
 LOGIN_REDIRECT_URL = 'home'  
 LOGOUT_REDIRECT_URL = 'home'  
