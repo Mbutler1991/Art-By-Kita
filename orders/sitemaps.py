@@ -8,10 +8,8 @@ class OrdersSitemap(Sitemap):
     def items(self):
         return [
             'orders:create_order',
-            'orders:order_success',
             'orders:order_cancel',
         ]
     
     def location(self, item):
         return reverse(item)
-    
