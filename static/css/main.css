@@ -14,11 +14,11 @@
 /* general styles */
 body {
     font-family: "Roboto", sans-serif;
+    background-color: #ffecf2;
 }
 
 main {
     padding-left: 20px;
-    background-color: #ffecf2;
     color: #000;
 }
     
