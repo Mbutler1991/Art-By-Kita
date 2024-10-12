@@ -1,7 +1,7 @@
 User-agent: *
 Disallow: /admin/
-Disallow: /login/
-Disallow: /register/
-Allow: /
+Disallow: /accounts/
+Disallow: /basket/
+Disallow: /user_messages/
 
 Sitemap: https://www.artbykita.com/sitemap.xml

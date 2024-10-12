@@ -2,11 +2,11 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 class ContactSitemap(Sitemap):
-    priority = 0.6
-    changefreq = 'monthly'
+    changefreq = 'monthly'  
+    priority = 0.5
 
     def items(self):
-        return ['contact:contact']
+        return ['contact:contact', 'contact:thank_you']  
 
     def location(self, item):
         return reverse(item)

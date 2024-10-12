@@ -25,7 +25,7 @@ def create_order(request):
                 full_name=f"{request.user.first_name} {request.user.last_name}",
                 email=request.user.email,
                 phone_number=request.user.phone_number,
-                address=request.user.shipping_address,  # Corrected to 'shipping_address'
+                address=request.user.shipping_address,  
                 total_amount=0,
             )
 
@@ -78,7 +78,7 @@ def create_order(request):
                 'full_name': order.full_name,
                 'email': order.email,
                 'phone_number': order.phone_number,
-                'address': order.address,  # 'address' is now correctly set
+                'address': order.address,  
             }
 
             return render(request, 'orders/payment.html', context)
