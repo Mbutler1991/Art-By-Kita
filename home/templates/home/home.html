@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <!-- Free Delivery Banner -->
+    <div class="alert alert-info text-center" role="alert" style="margin-top: 15px;">
+        <strong>Free Delivery on all National and International Orders!</strong>
+    </div>
+    
+    <!-- Main Title for SEO -->
+    <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">
+        Landscape & Dreamscape Paintings in County Clare
+    </h1>
+
+    <!-- Secondary Header for SEO -->
+    <h2 style="font-size: 1.75rem; color: #6c757d; margin-bottom: 1rem;">
+        Custom Acrylic Landscape & Dreamscape Paintings in Ireland
+    </h2>
+    
+    <!-- Mobile Image - Displayed on small screens only -->
+    <div class="row d-block d-md-none mb-3">
+        <div class="col-12 text-center">
+            <div class="image-container">
+                {% if random_painting %}
+                    <img src="{{ random_painting.image.url }}" alt="Landscape painting by County Clare artist - Art by Kita" class="img-fluid">
+                {% else %}
+                    <p>No painting available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="d-flex flex-column justify-content-center h-100">
+                <!-- Blurb with SEO Keywords -->
+                <p>Originally from Belfast and now based in County Clare, I specialize in creating stunning landscapes and dreamscapes using acrylic on pressed canvas. My paintings include both realistic portraits of actual areas and Irish-style myth paintings, often featuring hidden fairies and enchanted scenes.</p>
+                <p>With a deep passion for capturing nature's beauty and surreal visions, each painting is crafted with care and imagination, bringing your ideas to life. Whether you want a custom painting based on photos or a unique dreamscape, I can make it happen.</p>
+                <p>As a Neurodivergent artist with Autism and ADHD, my creative process is shaped by a unique perspective. I infuse each painting with emotion, depth, and a connection to nature, whether it's a serene landscape or a vibrant fantasy piece.</p>
+            </div>
+        </div>
+
+        <!-- Image for larger screens - Displayed on medium and up -->
+        <div class="col-md-6 d-none d-md-block">
+            <div class="image-container">
+                {% if random_painting %}
+                    <img src="{{ random_painting.image.url }}" alt="Landscape painting by County Clare artist - Art by Kita" class="img-fluid">
+                {% else %}
+                    <p>No painting available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Content for SEO Custom Painting Offer with contact button for customers -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h3 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">
+                Get a Custom Landscape or Dreamscape Painting
+            </h3>
+            <p>If you're looking for a custom painting of a favorite place, or have an idea for a dreamscape filled with mythical elements like hidden fairies, feel free to get in touch. I can bring your vision to life in an acrylic painting, whether it's a realistic landscape or a fantasy-inspired creation.</p>
+            <a href="{% url 'contact:contact' %}" class="btn btn-primary">Contact Me for Custom Paintings</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
