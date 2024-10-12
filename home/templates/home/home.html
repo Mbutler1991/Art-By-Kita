@@ -17,6 +17,19 @@
             <div class="col-md-12">
                 <!-- Secondary Header for SEO -->
                 <h2 style="font-size: 1.75rem; color: #6c757d; margin-bottom: 1rem;">Custom Acrylic Landscape & Dreamscape Paintings in Ireland</h2>
+                
+                <!-- For mobile view only display image before text content -->
+                <div class="row d-md-none mb-3">
+                    <div class="col-12 text-center">
+                        <div class="image-container">
+                            {% if random_painting %}
+                            <img src="{{ random_painting.image.url }}" alt="Landscape painting by County Clare artist - Art by Kita" class="img-fluid">
+                            {% else %}
+                            <p>No painting available.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-6 col-12">
