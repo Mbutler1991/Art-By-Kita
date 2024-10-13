@@ -14,8 +14,7 @@ urlpatterns = [
     path('gallery/', include('gallery.urls')),
     path('user_messages/', include('user_messages.urls')),
     path('orders/', include('orders.urls')),
+    path('newsletter/', include('newsletter.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),  
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name='robots'),
-    path('newsletter/', views.newsletter_signup, name='newsletter_signup'),
-    path('thank-you/', views.newsletterthank_you, name='newsletter_thankyou'),
 ]

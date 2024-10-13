@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'contact',
     'orders',
     'user_messages',
+    'newsletter',
 ]
 
 MIDDLEWARE = [
