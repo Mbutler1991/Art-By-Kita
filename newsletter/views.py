@@ -39,7 +39,7 @@ def newsletter_signup(request):
             content = "Thank you for subscribing to our newsletter. Stay tuned for updates!"
             send_newsletter(subject, content, email)
 
-            return redirect('newsletter_thankyou')
+            return redirect('newsletter:newsletter_thankyou')
     else:
         form = NewsletterSignupForm()
 
