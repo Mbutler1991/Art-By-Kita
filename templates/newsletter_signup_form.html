@@ -1,0 +1,11 @@
+<div id="newsletter-signup-tab" class="newsletter-signup-tab">
+    <button id="newsletter-toggle" class="newsletter-toggle">Newsletter Signup</button>
+    <div id="newsletter-form" class="newsletter-form hidden">
+        <form method="post" action="{% url 'newsletter_signup' %}">
+            {% csrf_token %}
+            <h3>Sign Up for Our Newsletter</h3>
+            {{ form.as_p }}
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
