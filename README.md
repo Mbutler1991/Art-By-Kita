@@ -19,3 +19,13 @@ Art By Kita is an eccommerce website designed for sale of unique and custom land
         1. As Staff, I want to easily add and remove stock.
         2. As Staff, I want to be able to update listings on the site including stock availability.
         3. As Staff, I want to have the ability to easily reply to customer messages.
+           
+-   ### Design
+    -   #### Colour Scheme
+        -   The main colours used are pink, white and black
+    -   #### Typography
+        -   The Roboto font is used as the main font throughout the website for all paragraphs and links, and the Alex Brush font is used for headings.
+    -   #### Imagery
+        -   Imagery is important. All images included in the website were painted by my partner Kita for whom this website is for.
+    -   #### Wireframes
+        -   [View](static/images/Boardom-Be-Gone_Wireframes.bmpr)
