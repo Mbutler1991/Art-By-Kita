@@ -24,7 +24,7 @@ BREVO_API_KEY = env('BREVO_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['art-by-kita-ci-af8ba42cd883.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['art-by-kita-ci-af8ba42cd883.herokuapp.com', 'localhost', 'www.artbykita.com', 'artbykita.com']
 
 LOGIN_REDIRECT_URL = 'home'  
 LOGOUT_REDIRECT_URL = 'home'  
@@ -89,8 +89,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'art_by_kita.wsgi.application'
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env('CLOUD_NAME'),
