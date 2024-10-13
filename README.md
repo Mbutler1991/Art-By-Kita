@@ -1,6 +1,6 @@
-<h1 align="center">Boardom Be-Gone</h1>
+<h1 align="center">Art By Kita</h1>
 
-[View the live project here.][(https://boardom-be-gone-92a7cf5b2b91.herokuapp.com/)](https://art-by-kita-ci-af8ba42cd883.herokuapp.com/)
+[View the live project here.][(https://art-by-kita-ci-af8ba42cd883.herokuapp.com/)]
 
 Art By Kita is an eccommerce website designed for sale of unique and custom landscape and dreamscape paintings. Painted with Acrylic Paint on canvas and it is aimed at any customers of nice art and landscapes.
 
