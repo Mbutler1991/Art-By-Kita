@@ -17,5 +17,5 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),  
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name='robots'),
     path('newsletter/', views.newsletter_signup, name='newsletter_signup'),
-    path('thank-you/', views.thank_you, name='newsletter_thankyou'),
+    path('thank-you/', views.newsletterthank_you, name='newsletter_thankyou'),
 ]
