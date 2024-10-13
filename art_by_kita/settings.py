@@ -24,7 +24,7 @@ BREVO_API_KEY = env('BREVO_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['art-by-kita-81626722ece0.herokuapp.com', 'www.artbykita.com', 'artbykita.com']
+ALLOWED_HOSTS = ['art-by-kita-ci-af8ba42cd883.herokuapp.com', 'www.artbykita.com', 'artbykita.com']
 
 LOGIN_REDIRECT_URL = 'home'  
 LOGOUT_REDIRECT_URL = 'home'  
