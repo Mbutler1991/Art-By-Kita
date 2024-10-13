@@ -24,7 +24,7 @@ BREVO_API_KEY = env('BREVO_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['art-by-kita-ci-af8ba42cd883.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'art-by-kita-ci-af8ba42cd883.herokuapp.com']
 
 LOGIN_REDIRECT_URL = 'home'  
 LOGOUT_REDIRECT_URL = 'home'  
@@ -111,6 +111,7 @@ DATABASES = {
         default=env('DATABASE_URL'))
 }
 
+SITE_ID = 2
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )

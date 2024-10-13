@@ -82,7 +82,7 @@
         <!-- footer -->
         <footer class="text-center">
             <p>&copy; {{ current_year }} Art by Kita. All Rights Reserved.</p>
-            <a href="{% url 'newsletter_signup' %}">Newsletter</a>
+            <a href="{% url 'newsletter:newsletter_signup' %}">Newsletter</a>
         </footer>
     </div>
 
@@ -93,8 +93,6 @@
         <button id="accept-cookies"
             style="background-color: white; color: black; border: none; padding: 5px 10px; margin-left: 10px; cursor: pointer;">Accept</button>
     </div>
-    <!-- to include newsletter tab -->
-    {% include 'newsletter_signup_form.html' %}
     <!-- script tags -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
