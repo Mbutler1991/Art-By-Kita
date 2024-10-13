@@ -111,7 +111,6 @@ DATABASES = {
         default=env('DATABASE_URL'))
 }
 
-SITE_ID = 2  
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
