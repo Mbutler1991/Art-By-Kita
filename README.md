@@ -114,3 +114,21 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 > remove: Total 10 (delta 1), reused 10 (delta 1)
 > Unpacking objects: 100% (10/10), done.
 ```
+
+## Credits
+
+### Content
+
+The content for this website was taken between myself and my partner as this is a website about her and her paintings which she sells
+
+### Media
+
+Images all came from my partner as she painted them all.
+
+### Code
+
+All code in this website is my own to the best of my knowledge.
+
+## Thanks
+
+I would like to give recognition to my fantastic mentor Lauren-Nicole Popich for her help with and guidance on this project, and to my life partner Nikita Ellison for keeping me grounded, advising me to step away when needed and ensuring I took care of myself as I got lost in the code.
