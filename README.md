@@ -28,7 +28,7 @@ Art By Kita is an eccommerce website designed for sale of unique and custom land
     -   #### Imagery
         -   Imagery is important. All images included in the website were painted by my partner Kita for whom this website is for.
     -   #### Wireframes
-        -   [View](static/images/Boardom-Be-Gone_Wireframes.bmpr)
+        -   [!wireframes](readme_images/wireframes.jpg)
      
 ## Features
 
@@ -40,7 +40,7 @@ Art By Kita is an eccommerce website designed for sale of unique and custom land
 
 ## Technologies Used
 
--   HTML, CSS, Django, Bootstrap, JQuery, JavaScript, Git, Github, Kanban, Canva, Cloudinary, Balsamiq, Stripe, Google Search Console
+-   HTML, CSS, Django, Bootstrap, JQuery, JavaScript, Git, Github, Kanban, Canva, Cloudinary, Stripe, Google Search Console
 
 ## Testing
 
