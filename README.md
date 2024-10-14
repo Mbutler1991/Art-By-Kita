@@ -61,3 +61,11 @@ Art By Kita is an eccommerce website designed for sale of unique and custom land
 -   Sent multiple messages back and forth and created, edited and deleted profiles.
 
 ## Marketing
+
+-   Used Meta tags and in content SEO keywords to make it easier to find
+-   Created a Facebook business profile ![Facebook Business](readme_images/fb-business.jpg)
+-   Created Google Business Profile ![Google Business](readme_images/google-business.jpg)
+-   Created Sitemaps and Robots.txt
+-   Submitted sitemaps to Google Search Console
+-   Created an actual live version of the website as it is being used as an active website under the link www.artbykita.com
+
