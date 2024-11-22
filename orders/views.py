@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 import stripe
 from django.conf import settings
-from django.contrib import messages  
+from django.contrib import messages
 import logging
 from basket.models import Basket, BasketItem
 from gallery.models import Painting
@@ -11,6 +11,7 @@ from .models import Order, OrderItem
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 logger = logging.getLogger(__name__)
+
 
 @login_required
 def create_order(request):
@@ -81,7 +82,8 @@ def create_order(request):
             )
         except stripe.error.StripeError as e:
             logger.error(f"Stripe Error: {e.user_message}")
-            messages.error(request, "There was an error processing your payment. Please try again.")
+            messages.error(
+                request, "There was an error processing your payment. Please try again.")
             order.delete()
             return redirect('basket:view_basket')
 
@@ -102,7 +104,7 @@ def create_order(request):
 
     return redirect('home:home')
 
- 
+
 def order_success(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
 
@@ -114,9 +116,10 @@ def order_success(request, order_id):
         order.status = 'Completed'
         order.save()
         return render(request, 'orders/success.html', {'order': order})
-    
+
     # If payment did not succeed send to cancel screen instead
     return redirect('order_cancel')
+
 
 def order_cancel(request):
     return render(request, 'orders/cancel.html')

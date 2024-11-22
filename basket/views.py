@@ -4,6 +4,7 @@ from gallery.models import Painting
 from .models import Basket, BasketItem
 from django.contrib import messages
 
+
 @login_required
 def view_basket(request):
     basket, created = Basket.objects.get_or_create(user=request.user)
@@ -15,6 +16,7 @@ def view_basket(request):
         'total_cost': total_cost,
     }
     return render(request, 'basket/view_basket.html', context)
+
 
 @login_required
 def add_to_basket(request, painting_id):
@@ -31,6 +33,7 @@ def add_to_basket(request, painting_id):
 
     return redirect('basket:view_basket')
 
+
 @login_required
 def remove_from_basket(request, item_id):
     basket = get_object_or_404(Basket, user=request.user)
@@ -38,4 +41,3 @@ def remove_from_basket(request, item_id):
     basket_item.delete()
     messages.success(request, f'Removed {basket_item.painting.title} from your basket.')
     return redirect('basket:view_basket')
-

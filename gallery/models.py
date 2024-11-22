@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
+
 class Painting(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()

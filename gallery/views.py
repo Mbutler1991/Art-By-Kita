@@ -5,30 +5,38 @@ from django.contrib import messages
 from .models import Painting
 from .forms import PaintingForm
 
+
 class PaintingListView(ListView):
     model = Painting
     template_name = 'gallery/painting_list.html'
     context_object_name = 'paintings'
     paginate_by = 10
 
+
 class PaintingDetailView(DetailView):
     model = Painting
     template_name = 'gallery/painting_detail.html'
     context_object_name = 'painting'
+
 
 @login_required
 def basket(request):
     # Your basket logic here
     return render(request, 'orders/basket.html')
 
+
 def staff_required(login_url=None):
     return user_passes_test(lambda u: u.is_staff, login_url=login_url)
+
 
 @login_required
 @staff_required(login_url='login')  # Redirect to login if not staff
 def manage_paintings(request):
     paintings = Painting.objects.all()
-    return render(request, 'gallery/manage_paintings.html', {'paintings': paintings})
+    return render(
+        request, 'gallery/manage_paintings.html', {'paintings': paintings}
+        )
+
 
 @login_required
 @staff_required(login_url='login')
@@ -43,6 +51,7 @@ def create_painting(request):
         form = PaintingForm()
     return render(request, 'gallery/create_painting.html', {'form': form})
 
+
 @login_required
 @staff_required(login_url='login')
 def edit_painting(request, painting_id):
@@ -55,7 +64,10 @@ def edit_painting(request, painting_id):
             return redirect('gallery:manage_paintings')
     else:
         form = PaintingForm(instance=painting)
-    return render(request, 'gallery/edit_painting.html', {'form': form, 'painting': painting})
+    return render(
+        request, 'gallery/edit_painting.html', {'form': form, 'painting': painting}
+        )
+
 
 @login_required
 @staff_required(login_url='login')
@@ -65,4 +77,6 @@ def delete_painting(request, painting_id):
         painting.delete()
         messages.success(request, 'Painting deleted successfully.')
         return redirect('gallery:manage_paintings')
-    return render(request, 'gallery/delete_painting.html', {'painting': painting})
+    return render(
+        request, 'gallery/delete_painting.html', {'painting': painting}
+        )

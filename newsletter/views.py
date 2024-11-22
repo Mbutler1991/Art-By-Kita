@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import NewsletterSignupForm
 from .models import NewsletterSubscriber
 
+
 def send_newsletter(subject, content, email):
     configuration = sib_api_v3_sdk.Configuration()
     configuration.api_key['api-key'] = settings.BREVO_API_KEY
@@ -28,6 +29,7 @@ def send_newsletter(subject, content, email):
     except ApiException as e:
         print(f"Failed to send newsletter: {e}")
 
+
 def newsletter_signup(request):
     if request.method == 'POST':
         form = NewsletterSignupForm(request.POST)
@@ -44,6 +46,7 @@ def newsletter_signup(request):
         form = NewsletterSignupForm()
 
     return render(request, 'newsletter/newsletter_signup.html', {'form': form})
+
 
 def newsletter_thankyou(request):
     return render(request, 'newsletter/newsletter_thankyou.html')

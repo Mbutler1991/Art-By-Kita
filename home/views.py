@@ -3,6 +3,7 @@ from datetime import datetime
 from gallery.models import Painting
 import random
 
+
 def home_view(request):
     paintings = Painting.objects.all()
     random_painting = random.choice(paintings) if paintings else None

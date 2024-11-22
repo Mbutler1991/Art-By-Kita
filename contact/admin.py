@@ -18,4 +18,5 @@ class ContactAdmin(admin.ModelAdmin):
             return readonly_fields + ['name', 'email', 'message', 'created_at']  
         return readonly_fields
 
+
 admin.site.register(Contact, ContactAdmin)
