@@ -15,6 +15,7 @@
             {% if request.user.is_authenticated %}
             <form method="POST" action="{% url 'orders:create_order' %}">
                 {% csrf_token %}
+                <input type="hidden" name="painting_id" value="{{ painting.id }}">
                 <button type="submit" class="btn btn-primary">Purchase</button>
             </form>
             <form method="POST" action="{% url 'basket:add_to_basket' painting.id %}">
