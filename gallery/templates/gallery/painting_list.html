@@ -2,14 +2,14 @@
 
 {% block content %}
 <div class="gallery-container">
-    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Gallery</h1>
-    <h3 style="font-size: 1.75rem; color: #6c757d; margin-bottom: 1rem;">Landscape and Dreamscape Portraits</h2>
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Gallery</h2>
+    <h3 style="font-size: 1.75rem; color: #6c757d; margin-bottom: 1rem;">Landscape and Dreamscape Portraits</h3>
     <div class="gallery">
         {% for painting in paintings %}
         <div class="gallery-item">
             <a href="{{ painting.get_absolute_url }}">
                 <img src="{{ painting.image.url }}" alt="{{ painting.name }}">
-                <h3>{{ painting.title }}</h3>
+                <h4>{{ painting.title }}</h4>
                 <p>€{{ painting.price }}</p>
             </a>
         </div>
