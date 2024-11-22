@@ -14,7 +14,7 @@
 /* general styles */
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #ffecf2;
+    background-color: white;
 }
 
 main {
@@ -61,6 +61,16 @@ nav.a {
 
 nav.a:hover {
     color: #fff;
+}
+
+h1.navbar-brand a {
+    color: black; 
+    text-decoration: none;
+}
+
+h1.navbar-brand a:hover {
+    color: black; 
+    text-decoration: none; 
 }
 
 /* header styles */
