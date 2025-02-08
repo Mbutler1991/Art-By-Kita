@@ -1,6 +1,7 @@
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from django.conf import settings
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import NewsletterSignupForm
 from .models import NewsletterSubscriber
@@ -35,13 +36,18 @@ def newsletter_signup(request):
         form = NewsletterSignupForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            NewsletterSubscriber.objects.create(email=email)
 
-            subject = "Welcome to Our Newsletter!"
-            content = "Thank you for subscribing to our newsletter. Stay tuned for updates!"
-            send_newsletter(subject, content, email)
+            # Check if email already exists
+            if NewsletterSubscriber.objects.filter(email=email).exists():
+                messages.error(request, "This email is already subscribed.")
+            else:
+                NewsletterSubscriber.objects.create(email=email)
 
-            return redirect('newsletter:newsletter_thankyou')
+                subject = "Welcome to Our Newsletter!"
+                content = "Thank you for subscribing to our newsletter. Stay tuned for updates!"
+                send_newsletter(subject, content, email)
+
+                return redirect('newsletter:newsletter_thankyou')
     else:
         form = NewsletterSignupForm()
 
