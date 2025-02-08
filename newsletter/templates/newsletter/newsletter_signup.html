@@ -5,6 +5,11 @@
 {% load static %}
 
 <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Sign Up for Our Newsletter</h2>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
