@@ -1,155 +1,186 @@
-<h1 align="center">Art By Kita</h1>
+# Art By Kita
 
-[View the live project here.][(https://art-by-kita-ci-af8ba42cd883.herokuapp.com/)]
+[View the live project here.](https://art-by-kita-ci-af8ba42cd883.herokuapp.com/)
 
-Art By Kita is an eccommerce website designed for sale of unique and custom landscape and dreamscape paintings. Painted with Acrylic Paint on canvas and it is aimed at any customers of nice art and landscapes.
+Art By Kita is an e-commerce website designed for the sale of unique and custom landscape and dreamscape paintings. These are painted with acrylic paint on canvas and are aimed at any customers who appreciate fine art and landscapes.
+
+---
+
+## Business Model Overview
+Art By Kita is an online art store specializing in **original paintings** and **custom commissions**. The business operates as a **B2C (Business to Consumer)** model, offering **one-of-a-kind artworks** directly to buyers.
+
+Customers can purchase existing paintings or request personalised commissions based on their ideas, photos, or specific themes. The platform ensures a seamless shopping experience with **secure payment processing and global shipping**.
+
+---
+
+## Target Audience
+Our customers include:
+- **Art Collectors** – Individuals looking for unique, high-quality paintings.
+- **Interior Designers** – Professionals sourcing exclusive artwork for clients.
+- **Gift Buyers** – People seeking personalised and meaningful gifts.
+- **Fans of the Artist’s Work** – Supporters who follow the artist’s journey and wish to own a piece.
+
+---
+
+## Revenue Streams
+Art By Kita generates revenue through:
+1. **Direct Sales** – Customers purchase original paintings from the online store.
+2. **Custom Commissions** – Buyers can request bespoke artwork tailored to their vision.
+
+---
+
+## Value Proposition
+### What Makes Us Stand Out?
+✅ **Exclusive Artworks** – Every painting is unique and handcrafted.  
+✅ **High-Quality Materials** – Premium acrylic on pressed canvas for long-lasting beauty.  
+✅ **Personalized Commissions** – Custom paintings based on client requests.  
+✅ **Global Shipping with Free Delivery** – No extra shipping costs for customers.  
+✅ **Secure & Easy Checkout** – Payments processed through **Stripe**.  
+
+---
 
 ## User Experience (UX)
 
--   ### User stories
+### User Stories
 
-    -   #### Customer Goals
+#### Customer Goals
 
-        1. As a Customer, I want to easily be able to navigate the site and find the right painting for me.
-        2. As a Customer, I want to be able to easily order products and make my payments online.
-        3. As a Customer, I want to be able to contact the admin staff if i have any questions about specific paintings including custom ideas I have.
+1. As a Customer, I want to easily navigate the site and find the right painting for me.
+2. As a Customer, I want to be able to easily order products and make my payments online.
+3. As a Customer, I want to be able to contact the admin staff if I have any questions about specific paintings, including custom ideas I have.
 
-    -   #### Staff Goals
+#### Staff Goals
 
-        1. As Staff, I want to easily add and remove stock.
-        2. As Staff, I want to be able to update listings on the site including stock availability.
-        3. As Staff, I want to have the ability to easily reply to customer messages.
-           
--   ### Design
-    -   #### Colour Scheme
-        -   The main colours used are pink, white and black
-    -   #### Typography
-        -   The Roboto font is used as the main font throughout the website for all paragraphs and links, and the Alex Brush font is used for headings.
-    -   #### Imagery
-        -   Imagery is important. All images included in the website were painted by my partner Kita for whom this website is for.
-    -   #### Wireframes
-        -   [!wireframes](readme_images/wireframes.jpg)
-     
+1. As Staff, I want to easily add and remove stock.
+2. As Staff, I want to be able to update listings on the site, including stock availability.
+3. As Staff, I want to have the ability to easily reply to customer messages.
+
+### Design
+
+#### Colour Scheme
+The main colours used are pink, white, and black.
+
+#### Typography
+The Roboto font is used as the main font throughout the website for all paragraphs and links, and the Alex Brush font is used for headings.
+
+#### Imagery
+Imagery is important. All images included in the website were painted by my partner, Kita, for whom this website was created.
+
+#### Wireframes
+![Wireframes](readme_images/wireframes.jpg)
+
+---
+
 ## Features
 
--   Responsive on all device sizes
+- Fully responsive across all device sizes.
+- Interactive elements.
+- Secure Stripe payment integration.
 
--   Interactive elements
-
--   Stripe payment form
+---
 
 ## Technologies Used
 
--   HTML, CSS, Django, Bootstrap, JQuery, JavaScript, Git, Github, Kanban, Canva, Cloudinary, Stripe, Google Search Console
+- **Languages & Frameworks**: HTML, CSS, Django, Bootstrap, JavaScript, jQuery
+- **Version Control**: Git & GitHub
+- **Project Management**: Kanban
+- **Media & Hosting**: Canva, Cloudinary
+- **Payments & SEO**: Stripe, Google Search Console
+
+---
 
 ## Testing
 
--   W3c HTML validator, no errors except for Django coding.
-  ![W3c Validator](readme_images/w3c.jpg)
-    The validator flags obsolete attributes (frameborder, allowtransparency, and scrolling) and a private browsing context name (__privateStripeMetricsControllerXXXX) in iframes generated by Stripe. These are beyond my control as they are part of Stripe's integration. My code itself adheres to modern standards and passes validation without third-party scripts.
-    Also bottom warning about h1s is unneccessary as it is the top level h1 and is the only h1 element used in any page.
--   Jigsaw CSS validator no errors
+- **W3C HTML Validator** – No errors except for Django-specific code.  
+  ![W3C Validator](readme_images/w3c.jpg)
+
+  The validator flags obsolete attributes (`frameborder`, `allowtransparency`, and `scrolling`) and a private browsing context name (`__privateStripeMetricsControllerXXXX`) in iframes generated by Stripe. These are beyond my control as they are part of Stripe’s integration. My code itself adheres to modern standards and passes validation without third-party scripts.
+
+  Also, the bottom warning about H1 elements is unnecessary, as it is the top-level H1 and the only H1 element used on any page.
+
+- **Jigsaw CSS Validator** – No errors.  
   ![Jigsaw Validator](readme_images/jigsaw.jpg)
--   JSHint showed no errors in JavaScript code
-  ![Jshint Validator](readme_images/jshint.jpg)
--   CI Python Linter showed no major errors.
-  ![pep8 Validator](readme_images/pep8ci.jpg)
+
+- **JSHint** – No errors in JavaScript code.  
+  ![JSHint Validator](readme_images/jshint.jpg)
+
+- **CI Python Linter (PEP8)** – No major errors.  
+  ![PEP8 Validator](readme_images/pep8ci.jpg)
 
 ### Further Testing
 
--   The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers. I opened every page and form and ensured all functionality was working correctly in every browser.
--   The website was viewed on a variety of devices such as Large Screen Television, Desktop, Laptop, Tablet, and a range of different android and apple smartphones and it looked how I want on every device.
--   A large amount of testing was done to ensure that all pages were linking correctly, all links directed to the correct area, all forms submitted correctly and items all added correctly to basket and saved for later. I did this by getting myself and other people I know to comb through the website and do everything, making sure that things like orders, contacts etc. showed up everywhere they should including admin panel.
--   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
--   Checked payment on Stripe in test environment
--   Sent multiple messages back and forth and created, edited and deleted profiles.
+- The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge, and Safari browsers.  
+- The website was viewed on various devices, including large screen televisions, desktops, laptops, tablets, and different Android and Apple smartphones. It displayed correctly on all tested devices.  
+- Extensive testing was conducted to ensure all pages linked correctly, forms submitted properly, and items added to the basket were saved correctly.  
+- Friends and family members reviewed the site and documentation to point out any bugs and/or user experience issues.  
+- Payment functionality was tested in Stripe's test environment.  
+- Multiple messages were sent, received, and deleted to confirm messaging functionality.  
+
+---
 
 ## Marketing
 
--   Used Meta tags and in content SEO keywords to make it easier to find
--   Created a Facebook business profile ![Facebook Business](readme_images/fb-business.jpg)
--   Created Google Business Profile ![Google Business](readme_images/google-business.jpg)
--   Created Sitemaps and Robots.txt
--   Submitted sitemaps to Google Search Console
--   Created an actual live version of the website as it is being used as an active website under the link www.artbykita.com
+- Used Meta tags and in-content SEO keywords to improve searchability.
+- Created a Facebook business profile.  
+  ![Facebook Business](readme_images/fb-business.jpg)
+- Created a Google Business Profile.  
+  ![Google Business](readme_images/google-business.jpg)
+- Created sitemaps and robots.txt.
+- Submitted sitemaps to Google Search Console.
+- Deployed an active version of the website under the domain [www.artbykita.com](https://www.artbykita.com).
+
+---
 
 ## Deployment
 
 ### GitHub Pages
 
-- The project was deployed to GitHub Pages using the following steps.
-    - Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-    - At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-        - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
-    - Scroll down the Settings page until you locate the "GitHub Pages" Section.
-    - Under "Source", click the dropdown called "None" and select "Master Branch".
-    - The page will automatically refresh.
-    - Scroll back down through the page to locate the now published site [link](https://github.com) in the "GitHub Pages" section.
+The project was deployed to GitHub Pages using the following steps:
 
-- The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
-    - Log in to Heroku.
-    - Click the button labelled "New" from the dashboard in the top right corner and select the "Create new app" option in the drop-down menu.
-    - Enter a unique name for the application and select the region you are in.
-    - Click "create app".
-    - Navigate to the "Config Vars" section of the settings tab and click "Reveal config vars".
-    - Add a config var 
-      - In the "KEY" field enter "CREDS" in capital letters.
-      - In the "VALUE" field copy and paste the contents of your creds.json file and click "Add".
-    - Add another config var.
-      - In the "KEY" field enter PORT in all capital letters.
-      - In the "VALUE" field enter 8000 and click "Add".
-    - Scroll to the "Buildpacks" section and click "Add buildpack".
-    - Select Python and save changes.
-    - Add another buildpack and select Nodejs then save changes again.
-    - Ensure that the python buildpack is above the Nodejs buildpack.
-    - Navigate to the "Deploy" section.
-    - Select "GitHub" as the deployment method and click "Connect to GitHub".
-    - Search for the GitHub repository name in the search bar.
-    - Click on "connect" to link the repository to Heroku.
-    - Scroll down and click on "Deploy Branch".
-    - Once the app is deployed, Heroku will notify you and provide a button to view the app.
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/).
+2. At the top of the Repository (not the top of the page), locate the **Settings** button in the menu.
+3. Scroll down the Settings page until you locate the **GitHub Pages** section.
+4. Under **Source**, click the dropdown called "None" and select **Master Branch**.
+5. The page will automatically refresh.
+6. Scroll back down through the page to locate the now published site [link](https://github.com/) in the **GitHub Pages** section.
 
-### Forking the GitHub Repository
+### Deploying on Heroku
 
-By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
+The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps:
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
-3. You should now have a copy of the original repository in your GitHub account.
+1. Log in to Heroku.
+2. Click the **New** button from the dashboard and select **Create new app**.
+3. Enter a unique name for the application and select the appropriate region.
+4. Click **Create app**.
+5. Navigate to the **Config Vars** section in the settings tab and click **Reveal config vars**.
+6. Add a config var:
+   - In the **KEY** field, enter `CREDS`.
+   - In the **VALUE** field, copy and paste the contents of your `creds.json` file and click **Add**.
+7. Add another config var:
+   - In the **KEY** field, enter `PORT`.
+   - In the **VALUE** field, enter `8000` and click **Add**.
+8. Scroll to the **Buildpacks** section and click **Add buildpack**.
+9. Select **Python** and save changes.
+10. Add another buildpack, select **Node.js**, and save changes again.
+11. Ensure that the Python buildpack is above the Node.js buildpack.
+12. Navigate to the **Deploy** section.
+13. Select **GitHub** as the deployment method and click **Connect to GitHub**.
+14. Search for the GitHub repository name in the search bar.
+15. Click on **Connect** to link the repository to Heroku.
+16. Scroll down and click on **Deploy Branch**.
+17. Once the app is deployed, Heroku will notify you and provide a button to view the app.
 
-### Making a Local Clone
-
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. Under the repository name, click "Clone or download".
-3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
-4. Open Git Bash
-5. Change the current working directory to the location where you want the cloned directory to be made.
-6. Type `git clone`, and then paste the URL you copied in Step 3.
-
-```
-$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-```
-
-7. Press Enter. Your local clone will be created.
-
-```
-$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-> Cloning into `CI-Clone`...
-> remote: Counting objects: 10, done.
-> remote: Compressing objects: 100% (8/8), done.
-> remove: Total 10 (delta 1), reused 10 (delta 1)
-> Unpacking objects: 100% (10/10), done.
-```
+---
 
 ## Credits
 
 ### Content
 
-The content for this website was taken between myself and my partner as this is a website about her and her paintings which she sells
+The content for this website was developed by myself and my partner, as this website is dedicated to her and her artwork.
 
 ### Media
 
-Images all came from my partner as she painted them all.
+All images used on the site were provided by my partner, as she painted them all.
 
 ### Code
 
