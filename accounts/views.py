@@ -4,6 +4,8 @@ from .forms import CustomUserCreationForm, CustomUserUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 def signup(request):
@@ -38,6 +40,23 @@ def edit_profile(request):
         form = CustomUserUpdateForm(instance=request.user)
 
     return render(request, 'accounts/edit_profile.html', {'form': form})
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Keeps the user logged in after password change
+            messages.success(request, 'Your password has been updated successfully.')
+            return redirect('accounts:profile')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    return render(request, 'accounts/change_password.html', {'form': form})
 
 
 @login_required
