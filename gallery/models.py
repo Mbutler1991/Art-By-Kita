@@ -9,7 +9,10 @@ class Painting(models.Model):
     dimensions = models.CharField(max_length=50)
     materials = models.CharField(max_length=150)
     image = CloudinaryField('image', folder='paintings')
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        validators=[MinValueValidator(0.01)]
 
     def __str__(self):
         return self.title
