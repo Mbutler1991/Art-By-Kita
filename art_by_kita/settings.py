@@ -22,7 +22,7 @@ BREVO_API_KEY = env('BREVO_API_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'art-by-kita-ci-af8ba42cd883.herokuapp.com']
 
