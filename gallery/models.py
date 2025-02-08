@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
+from django.core.validators import MinValueValidator
 
 
 class Painting(models.Model):
@@ -13,7 +14,7 @@ class Painting(models.Model):
         max_digits=6,
         decimal_places=2,
         validators=[MinValueValidator(0.01)]
-
+    )
     def __str__(self):
         return self.title
 
