@@ -77,15 +77,37 @@ Art By Kita is an eccommerce website designed for sale of unique and custom land
 
 ### GitHub Pages
 
-The project was deployed to GitHub Pages using the following steps...
+- The project was deployed to GitHub Pages using the following steps.
+    - Log in to GitHub and locate the [GitHub Repository](https://github.com/)
+    - At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
+        - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
+    - Scroll down the Settings page until you locate the "GitHub Pages" Section.
+    - Under "Source", click the dropdown called "None" and select "Master Branch".
+    - The page will automatically refresh.
+    - Scroll back down through the page to locate the now published site [link](https://github.com) in the "GitHub Pages" section.
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
-3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-4. Under "Source", click the dropdown called "None" and select "Master Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://github.com) in the "GitHub Pages" section.
+- The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
+    - Log in to Heroku.
+    - Click the button labelled "New" from the dashboard in the top right corner and select the "Create new app" option in the drop-down menu.
+    - Enter a unique name for the application and select the region you are in.
+    - Click "create app".
+    - Navigate to the "Config Vars" section of the settings tab and click "Reveal config vars".
+    - Add a config var 
+      - In the "KEY" field enter "CREDS" in capital letters.
+      - In the "VALUE" field copy and paste the contents of your creds.json file and click "Add".
+    - Add another config var.
+      - In the "KEY" field enter PORT in all capital letters.
+      - In the "VALUE" field enter 8000 and click "Add".
+    - Scroll to the "Buildpacks" section and click "Add buildpack".
+    - Select Python and save changes.
+    - Add another buildpack and select Nodejs then save changes again.
+    - Ensure that the python buildpack is above the Nodejs buildpack.
+    - Navigate to the "Deploy" section.
+    - Select "GitHub" as the deployment method and click "Connect to GitHub".
+    - Search for the GitHub repository name in the search bar.
+    - Click on "connect" to link the repository to Heroku.
+    - Scroll down and click on "Deploy Branch".
+    - Once the app is deployed, Heroku will notify you and provide a button to view the app.
 
 ### Forking the GitHub Repository
 
