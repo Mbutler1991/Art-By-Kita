@@ -29,6 +29,8 @@
                         <label for="message">Message:</label>
                         <textarea id="message" name="message" required>{{ form.message.value|default:'' }} </textarea>
                     </div>
+
+                    <input type="hidden" id="id_captcha" name="g-recaptcha-response">
                 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -36,5 +38,14 @@
             </div>
         </div>
     </div>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=your-site-key"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('your-site-key', {action: 'submit'}).then(function(token) {
+            document.getElementById("id_captcha").value = token;
+        });
+    });
+</script>
 
 {% endblock %}
