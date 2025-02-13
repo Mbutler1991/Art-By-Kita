@@ -145,6 +145,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+RECAPTCHA_PUBLIC_KEY = 'SITE_CKEY'
+RECAPTCHA_PRIVATE_KEY = "SITE_SECRET_CKEY"
+RECAPTCHA_REQUIRED_SCORE = 0.5  
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
